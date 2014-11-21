@@ -18,6 +18,9 @@
 <body>
 
     <div id="diagramContainer">
+		<div id="0" name="some-place" class="item" connection="1,2">d</div>
+		<div id="1" name="another-place" class="item" connection="2">d</div>
+		<div id="2" name="another-place" class="item" connection="">df</div>
         <div id="item_left" class="item"></div>
         <div id="item_right" class="item" style="left:150px;"></div>
     </div>
@@ -27,6 +30,10 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jsPlumb/1.4.1/jquery.jsPlumb-1.4.1-all-min.js"></script>
     
     <script>
+	
+		var nodes = 3;
+	
+	
         jsPlumb.ready(function() {
             jsPlumb.connect({
                 source:"item_left",
@@ -37,9 +44,18 @@
 				endpointStyle:{ fillStyle:"lightgray", outlineColor:"gray" },
                 endpoint:"Dot"
             });
+			
+			
+			for(var i = 0; i < nodes; i++){
+				var connections = $('#'+i).attr("connection");
+				alert(connections);
+			};
             
             jsPlumb.draggable("item_left");
             jsPlumb.draggable("item_right");
+			 jsPlumb.draggable("0");
+            jsPlumb.draggable("1");
+			 jsPlumb.draggable("2");
         });
     </script> 
 
